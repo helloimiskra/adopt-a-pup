@@ -1,3 +1,3 @@
-class PetsController < ApplicationRecord
+class PetsController < ApplicationController
 
 end
