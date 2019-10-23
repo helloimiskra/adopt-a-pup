@@ -23,6 +23,9 @@ class SheltersController < ApplicationController
     def edit
     end
 
+    def index
+        @shelters = Shelter.all
+    end
 
     def update
         @shelter = Shelter.find(params[:id])

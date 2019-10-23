@@ -1,0 +1,11 @@
+<%@pets.map do |p| %>
+Name: <%=link_to 'p.name', pet_path(p) %>
+Type: <%=p.type%>
+Breed: <%=p.breed%>
+Shelter: <%=p.shelter%>
+Available?: <% if p.adopted == false %>
+<%= "Yes." %>
+<% else %>
+<%= "No."%>
+<%end%>
+<%end%>
