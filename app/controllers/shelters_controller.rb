@@ -5,11 +5,13 @@ class SheltersController < ApplicationController
     end
 
     def create
-        shelter = Shelter.create(shelter_params)
-        if shelter.save
-            @shelter = shelter
+        @shelter = Shelter.create(shelter_params)
+    
+        if @shelter.valid?
+            @shelter.save
             redirect_to shelter_path(@shelter)
         else
+            flash[:alert] = "There was an error. Please try again."
             render :new
         end
     end
