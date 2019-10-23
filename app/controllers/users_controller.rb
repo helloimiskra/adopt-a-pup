@@ -6,7 +6,8 @@ class UsersController < ApplicationController
     def create
         @user = User.create(user_params)
 
-        if @user.save
+        if @user.valid?
+            @user.save
             session[:user_id] = @user.id 
             redirect_to user_path(@user)
         else
@@ -22,6 +23,20 @@ class UsersController < ApplicationController
         end
       
     end
+
+    def edit
+    end
+
+    def update
+        @user = current_user
+        @user.update(pet_params)
+        redirect_to user_path(@user)
+    end
+
+
+
+
+
 
 
     private
