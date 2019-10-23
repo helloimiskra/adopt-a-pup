@@ -1,0 +1,11 @@
+<%= form_with model: @pet do |f| %>
+  Name: <%=f.text_field :name %><br>
+  Pet Type: (dog, cat, etc.) <%=f.text_field :type %><br>
+  Breed: <%=f.text_field :breed %>
+  Description: <%=f.text_field :description%>
+  Shelter: <%=f.text_field :shelter %>
+  Adopted?: <%= check_box_tag(:adopted) %>
+
+
+  <%= f.submit "Post Pet"%>
+<% end %>
