@@ -3,10 +3,9 @@
   Last Name: <%=f.text_field :last_name %><br>
   Username: <%=f.text_field :username %><br>
   Password: <%=f.password_field :password %><br>
-  Email: <%=f.text_field :email %>
+  Email: <%=f.text_field :email %><br>
   Check if you are representing a shelter.
-  <%= f.check_box :shelter_admin, {}, 1, 0  %>
-  <%= label_tag(:user_admin, "I manage a shelter.") %><br>
+  <%= check_box_tag(:shelter_admin) %><br>
 
   <%= f.submit "Create User"%>
 <% end %>
