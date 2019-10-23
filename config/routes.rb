@@ -5,9 +5,14 @@ Rails.application.routes.draw do
   resources :shelters
   resources :sessions
 
-  get '/signin' => 'sessions#new'
-  post '/signin' => 'sessions#create'
-  post '/signout' => 'sessions#destroy'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
+
+  get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
+
+  get '/home' => 'users#show'
 
   root 'users#welcome'
 end
