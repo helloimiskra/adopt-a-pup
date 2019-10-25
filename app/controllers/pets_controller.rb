@@ -4,6 +4,10 @@ class PetsController < ApplicationController
         @pet = Pet.new
     end
 
+    def index
+        @pets = Pet.all
+    end
+
     def create
         pet = Pet.create(pet_params)
         if pet.save
@@ -32,7 +36,7 @@ class PetsController < ApplicationController
     private
     
     def pet_params
-        params.require(:pet).permit(:name, :type, :breed, :description, :adopted)
+        params.require(:pet).permit(:name, :pet_type, :breed, :description, :adopted)
     end
 
 
