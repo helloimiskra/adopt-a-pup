@@ -3,7 +3,7 @@ Your registered information is down below:<br>
 Username: <%=@user.username%> <br>
 Contact Email: <%=@user.email%><br>
 <% if @user.shelter_admin == true%>
-<% @user.shelters.map.uniq do |s| %>
+<% @user.shelters.map do |s| %>
 Manage <%= link_to s.name, shelter_path(s) %> here.
 <%end%>
 <%end%>
