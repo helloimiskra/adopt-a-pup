@@ -5,12 +5,12 @@
 
 Available Pets:
 <%@shelter.pets.map do |p|%>
-<li>
-<ul><%=link_to p.name, pet_path(p)%></ul>
-<ul><%=p.pet_type%></ul>
-<ul><%=p.breed%></ul>
-</li>
+
+<ul>Name: <%=link_to p.name, pet_path(p)%></ul>
+<ul>Pet Type: <%=p.pet_type%></ul>
+<ul>Breed:<%=p.breed%></ul>
+
 <%end%>
-<% if current_user = @shelter.user %>
+<% if current_user == @shelter.user %>
 <%=link_to 'Edit your shelter information here.', edit_shelter_path(@shelter) %>
 <%end%>
