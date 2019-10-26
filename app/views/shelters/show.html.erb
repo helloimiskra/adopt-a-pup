@@ -2,3 +2,6 @@
 <h2>Shelter Address: <%=@shelter.address%><h2>
 <h3>Contact Email: <%=@shelter.email%><h3><br>
 <h4><%=link_to 'Browse Available Pets', pets_path(@shelter.pets)%> </h4>
+<% if current_user = @shelter.user %>
+<%=link_to 'Edit your shelter information here.', edit_shelter_path(@shelter) %>
+<%end%>
