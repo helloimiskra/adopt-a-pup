@@ -1,0 +1,11 @@
+<%= form_with model: @user do |f| %>
+  First Name: <%=f.text_field :first_name %><br>
+  Last Name: <%=f.text_field :last_name %><br>
+  Username: <%=f.text_field :username %><br>
+  Password: <%=f.password_field :password %><br>
+  Email: <%=f.text_field :email %><br>
+  Check if you are representing a shelter.
+  <%= check_box_tag(:shelter_admin) %><br>
+
+  <%= f.submit "Create User"%>
+<% end %>

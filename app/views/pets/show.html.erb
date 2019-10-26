@@ -13,3 +13,4 @@ Available?: <% if @pet.adopted == false %>
 <% if current_user.shelters.include?(@pet.shelter) %>
 Click to edit <%= link_to @pet.name, edit_pet_path(@pet)%>'s page.
 <%end%>
+Click <%=link_to 'here', pets_path%> to go back.
