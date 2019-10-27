@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
 
   get '/home' => 'users#show'
+  get '/mypage' => 'users#show'
 
   root 'users#welcome'
 end
