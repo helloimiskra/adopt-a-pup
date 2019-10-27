@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
             redirect_to user_path(@user)
         else
             flash[:alert] = 'Try Again.'
-            redirect_to '/signin'
+            redirect_to '/login'
         end
 
     end

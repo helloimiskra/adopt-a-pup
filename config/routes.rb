@@ -7,13 +7,20 @@ Rails.application.routes.draw do
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+
   post '/logout' => 'sessions#destroy'
+  get '/logout' => 'sessions#destroy'
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
 
-  get '/home' => 'users#show'
   get '/mypage' => 'users#show'
+  get '/home' => 'users#show'
+
+  resources :shelters, only: [:show] do
+    resources :pets, only: [:show, :index]
+  end
+ 
 
   root 'users#welcome'
 end

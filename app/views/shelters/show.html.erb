@@ -1,9 +1,11 @@
 Shelter Name: <%=@shelter.name%><br>
 Shelter Address: <%=@shelter.address%><br>
 <h3>Contact Email: <%=@shelter.email%><h3><br>
-<h4><%=link_to 'Browse Available Pets', pets_path(@shelter.pets)%> </h4>
+<h4><%=link_to 'Browse Available Pets', shelter_pets_path(shelter_id)%> </h4>
 
 Available Pets:
+
+
 <%@shelter.pets.map do |p|%>
 
 <ul>Name: <%=link_to p.name, pet_path(p)%></ul>

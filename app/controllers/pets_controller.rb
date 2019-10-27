@@ -5,7 +5,11 @@ class PetsController < ApplicationController
     end
 
     def index
-        @pets = Pet.all
+        if params[:shelter_id]
+            @pets = Shelter.find(params[:shelter_id]).pets
+        else
+            @pets = Pet.all
+        end
     end
 
     def create

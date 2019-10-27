@@ -6,10 +6,16 @@ Looking for a pet?<br>
 <%=link_to 'Sign up', '/signup' %> or <%=link_to 'log in', '/login' %> to start looking at available pets.
 <br>
 Managing a shelter? <%=link_to 'Sign up', '/signup' %> or <%=link_to 'log in', '/login' %> to start managing your available pets.
+<br>
 <% elsif current_user.shelter_admin == true%>
+<br>
 <% current_user.shelters.map do |s| %>
 Click to manage <%=link_to s.name, shelter_path(s)%>.
-<%end%><br>
+<%end%>
+<br>
+Click to manage your <%=link_to 'user page', user_path(current_user)%>
+
+<br>
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='Log Out'>
 <% end %>
@@ -17,4 +23,5 @@ Click to manage <%=link_to s.name, shelter_path(s)%>.
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='Log Out'>
 <% end %>
+Click to manage your <%=link_to 'page', user_path(current_user)%>
 <%end%>
