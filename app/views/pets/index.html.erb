@@ -1,4 +1,4 @@
-<h1>All Pets:</h1> 
+<h4>All Pets:</h4> 
 
 <%@pets.map do |p| %>
 Name: <%=link_to p.name, pet_path(p) %> <br>
@@ -10,6 +10,8 @@ Available?: <% if p.adopted == false %>
 <% else %>
 <%= "No."%>
 <%end%>
+<br>
+
 <br>
 <%end%>
 Click <%=link_to 'here', '/'%> to go to the home page.

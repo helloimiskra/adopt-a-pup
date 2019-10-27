@@ -17,7 +17,8 @@ class SheltersController < ApplicationController
     end
 
     def show
-        @shelter = Shelter.find_by(params[:id])
+        
+        @shelter = Shelter.find_by(id: params[:id])
     end
 
     def edit
