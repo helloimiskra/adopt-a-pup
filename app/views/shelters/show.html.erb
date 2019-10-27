@@ -1,7 +1,7 @@
 Shelter Name: <%=@shelter.name%><br>
 Shelter Address: <%=@shelter.address%><br>
-<h3>Contact Email: <%=@shelter.email%><h3><br>
-<h4><%=link_to 'Browse Available Pets', shelter_pets_path(shelter_id)%> </h4>
+Contact Email: <%=@shelter.email%><br>
+<%=link_to 'Browse Available Pets', shelter_pets_path(@shelter.id)%>
 
 Available Pets:
 

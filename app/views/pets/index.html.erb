@@ -4,7 +4,7 @@
 Name: <%=link_to p.name, pet_path(p) %> <br>
 Type: <%=p.pet_type%><br>
 Breed: <%=p.breed%><br>
-Shelter: <%=p.shelter.name%><br>
+Shelter: <%=link_to p.shelter.name, shelter_path(p.shelter)%><br>
 Available?: <% if p.adopted == false %>
 <%= "Yes." %>
 <% else %>
