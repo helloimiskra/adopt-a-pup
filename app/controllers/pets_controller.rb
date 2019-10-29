@@ -16,6 +16,8 @@ class PetsController < ApplicationController
         pet = Pet.create(pet_params)
         if pet.save
             @pet = pet
+            @pet.user_id = current_user.id
+            @pet.save
             redirect_to pet_path(@pet)
         else
             render :new
