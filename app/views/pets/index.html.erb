@@ -1,6 +1,17 @@
 <h4>All Pets:</h4> 
+
 <%@pets.each do |p| %>
-<%= render partial: "pet_profile", locals: {pet: p} %>
+
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body"><h5 class="card-title"> <%=p.name%> </h5>
+    <p class="card-text"><%= render partial: "pet_profile", locals: {pet: p} %></p>
+    <a href="#" class="btn btn-primary">Click to Apply</a>
+  </div>
+</div>
+</div>
+</div>
 <%end%>
 
 

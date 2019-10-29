@@ -1,4 +1,3 @@
-<br>
 Name: <%=pet.name%><br>
 Pet Type: <%=pet.pet_type%><br>
 Breed: <%=pet.breed%><br>
@@ -9,10 +8,8 @@ Available?: <% if pet.adopted == false %>
 <% else %>
 <%= "I've found a home."%>
 <%end%>
-<br>
+
 
 <% if logged_in? && current_user.shelters.include?(pet.shelter) %>
 Click to edit <%= link_to pet.name, edit_pet_path(pet)%>'s page.
 <%end%>
-
-<br>

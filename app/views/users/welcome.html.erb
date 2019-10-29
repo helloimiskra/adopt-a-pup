@@ -9,6 +9,7 @@ Managing a shelter? <%=link_to 'Sign up', '/signup' %> or <%=link_to 'log in', '
 <br>
 <% elsif current_user.shelter_admin == true%>
 <br>
+Welcome, <%=current_user.name%>.
 <% current_user.shelters.map do |s| %>
 Click to manage <%=link_to s.name, shelter_path(s)%>.
 <%end%>
@@ -20,8 +21,10 @@ Click to manage your <%=link_to 'user page', user_path(current_user)%>
   <input type=submit value='Log Out'>
 <% end %>
 <%else%>
+Welcome, <%=current_user.name%>. <br>
+Click to manage your <%=link_to 'page', user_path(current_user)%>
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='Log Out'>
 <% end %>
-Click to manage your <%=link_to 'page', user_path(current_user)%>
+
 <%end%>
