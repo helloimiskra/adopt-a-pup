@@ -1,7 +1,4 @@
-<%= form_with model: @shelter do |f| %>
-  Name: <%=f.text_field :name %><br>
-  Address: <%=f.text_field :address %><br>
-  Email: <%=f.text_field :email %><br>
 
-  <%= f.submit "Create Shelter"%>
+<%= form_tag shelter_path(@shelter), method: "put" do %>
+ <%= render partial: 'form', locals: {shelter: @shelter}, post: Shelter.new %>
 <% end %>

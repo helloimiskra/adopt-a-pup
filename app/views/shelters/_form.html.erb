@@ -1,0 +1,7 @@
+<%= form_with model: @shelter do |f| %>
+  Name: <%=f.text_field :name %><br>
+  Address: <%=f.text_field :address %><br>
+  Email: <%=f.text_field :email %><br>
+
+  <%= f.submit "Create Shelter"%>
+<% end %>

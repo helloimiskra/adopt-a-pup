@@ -1,7 +1,4 @@
 
-
-
-
 <%= form_tag pet_path(@pet), method: "put" do %>
  <%= render partial: 'form', locals: {pet: @pet}, post: Pet.new %>
 <% end %>
