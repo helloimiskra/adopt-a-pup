@@ -5,4 +5,6 @@ class Pet < ActiveRecord::Base
     def self.by_pet_type(pet_type)
         where(pet_type: pet_type)
     end
+
+    
 end

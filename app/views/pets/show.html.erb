@@ -1,14 +1,5 @@
-<br>
-Name: <%=@pet.name%><br>
-Pet Type: <%=@pet.pet_type%><br>
-Breed: <%=@pet.breed%><br>
-More about me: <%=@pet.description%><br>
-Where am I?: Currently @ <%=link_to @pet.shelter.name, shelter_path(@pet.shelter) %><br>
-Available?: <% if @pet.adopted == false %>
-<%= "Yes, I need a new home!" %>
-<% else %>
-<%= "I've found a home."%>
-<%end%>
+
+<%= render partial: "pet_profile", locals: {pet: @pet} %>
 <br>
 <% if logged_in? && current_user.shelters.include?(@pet.shelter) %>
 Click to edit <%= link_to @pet.name, edit_pet_path(@pet)%>'s page.
