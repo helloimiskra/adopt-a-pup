@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users
-  resources :pets
+  resources :pets, only: [:index, :show, :new, :create, :edit, :update]
   resources :shelters
   resources :sessions
 
@@ -16,10 +16,14 @@ Rails.application.routes.draw do
 
   get '/mypage' => 'users#show'
   get '/home' => 'users#show'
+  
+  get '/apply' => 'pets#application'
 
   resources :shelters, only: [:show] do
     resources :pets, only: [:show, :index]
   end
+
+  patch 'pets/:id', to: 'pets#update'
  
 
   root 'users#welcome'

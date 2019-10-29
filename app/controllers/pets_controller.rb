@@ -32,16 +32,20 @@ class PetsController < ApplicationController
 
 
     def update
-        @pet = Pet.find(params[:id])
+        @pet = Pet.find_by(id: params[:id])
+      
         @pet.update(pet_params)
         redirect_to pet_path(@pet)
     end
 
+    def application
+        @pet = Pet.find_by(id: params[:id])
+    end
 
     private
     
     def pet_params
-        params.require(:pet).permit(:name, :pet_type, :breed, :description, :adopted)
+        params.require(:pet).permit(:name, :pet_type, :breed, :description, :adopted, :shelter_id)
     end
 
 

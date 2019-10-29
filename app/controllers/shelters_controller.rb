@@ -8,6 +8,7 @@ class SheltersController < ApplicationController
         @shelter = Shelter.create(shelter_params)
     
         if @shelter.valid?
+            @shelter.user_id = current_user.id
             @shelter.save
             redirect_to shelter_path(@shelter)
         else

@@ -8,8 +8,7 @@ Looking for a pet?<br>
 Managing a shelter? <%=link_to 'Sign up', '/signup' %> or <%=link_to 'log in', '/login' %> to start managing your available pets.
 <br>
 <% elsif current_user.shelter_admin == true%>
-<br>
-Welcome, <%=current_user.name%>.
+Welcome, <%=current_user.name%>.<br>
 <% current_user.shelters.map do |s| %>
 Click to manage <%=link_to s.name, shelter_path(s)%>.
 <%end%>
