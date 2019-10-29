@@ -27,6 +27,7 @@ class PetsController < ApplicationController
     end
 
     def edit
+        @pet = Pet.find_by(id: params[:id])
     end
 
 

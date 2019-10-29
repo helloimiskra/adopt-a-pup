@@ -1,17 +1,8 @@
 <h4>All Pets:</h4> 
-
-<%@pets.map do |p| %>
-Name: <%=link_to p.name, pet_path(p) %> <br>
-Type: <%=p.pet_type%><br>
-Breed: <%=p.breed%><br>
-Shelter: <%=link_to p.shelter.name, shelter_path(p.shelter)%><br>
-Available?: <% if p.adopted == false %>
-<%= "Yes." %>
-<% else %>
-<%= "No."%>
+<%@pets.each do |p| %>
+<%= render partial: "pet_profile", locals: {pet: p} %>
 <%end%>
-<br>
 
-<br>
-<%end%>
+
+
 Click <%=link_to 'here', '/'%> to go to the home page.
