@@ -1,14 +1,4 @@
-<h1>Welcome, <%=@user.name%>.</h1>
-Your registered information is down below:<br>
-Username: <%=@user.username%> <br>
-Contact Email: <%=@user.email%><br>
-<% if @user.shelter_admin == true%>
-<% @user.shelters.map do |s| %>
-Manage <%= link_to s.name, shelter_path(s) %> here.
-<%end%>
-<%else%>
-Click <%=link_to 'here', pets_path %> to view all pets.
+<%= render partial: "user_info", locals: {user: @user} %>
 
-<%end%>
 <br>
 <%=link_to 'Click here to edit your profile.', edit_user_path(@user) %>

@@ -1,1 +1,6 @@
+<%if current_user.shelter_admin == true%>
 <%= render partial: 'form', locals: {pet: @pet}, post: Pet.new %>
+<%else%>
+Sorry, you do not have access to this page. Please <%=link_to 'click', pets_path%> to view all available pets. 
+
+<%end%>
