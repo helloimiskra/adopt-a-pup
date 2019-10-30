@@ -7,7 +7,5 @@
   Description: <%=f.text_area :description%><br>
   Shelter: <%=f.collection_select :shelter_id, Shelter.all, :id, :name  %><br>
   Adopted?: <%= f.check_box :adopted, {}, "true", "false" %><br>
-
-
   <%= f.submit "Post Pet"%>
 <% end %>
