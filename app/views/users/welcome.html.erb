@@ -7,6 +7,9 @@ Looking for a pet?<br>
 <br>
 Managing a shelter? <%=link_to 'Sign up', '/signup' %> or <%=link_to 'log in', '/login' %> to start managing your available pets.
 <br>
+
+  <%= link_to('Sign in with your Google Account', '/auth/google_oauth2') %>
+
 <% elsif current_user.shelter_admin == true%>
 Welcome, <%=current_user.name%>.<br>
 <% current_user.shelters.map do |s| %>

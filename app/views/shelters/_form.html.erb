@@ -1,3 +1,18 @@
+<% if @shelter.errors.any? %>
+  <div id="error_explanation">
+    <h4>
+      <%= pluralize(@shelter.errors.count, "error") %>
+      prohibited this shelter from being saved:
+    </h4>
+ 
+    <ul>
+    <% @shelter.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with model: @shelter do |f| %>
   Name: <%=f.text_field :name %><br>
   Address: <%=f.text_field :address %><br>

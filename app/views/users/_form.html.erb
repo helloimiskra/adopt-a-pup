@@ -1,3 +1,17 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h4>
+      <%= pluralize(@user.errors.count, "error") %>
+      prohibited this user from being saved:
+    </h4>
+ 
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_for(@user) do |f| %>
   First Name: <%=f.text_field :first_name %><br>
   Last Name: <%=f.text_field :last_name %><br>
@@ -9,3 +23,4 @@
 
   <%= f.submit "Create User"%>
 <% end %>
+

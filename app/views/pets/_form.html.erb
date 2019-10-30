@@ -1,3 +1,17 @@
+<% if @pet.errors.any? %>
+  <div id="error_explanation">
+    <h4>
+      <%= pluralize(@pet.errors.count, "error") %>
+      prohibited this pet from being saved:
+    </h4>
+ 
+    <ul>
+    <% @pet.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_for(@pet) do |f| %>
   Name: <%=f.text_field :name %><br>
   Pet Type: (dog, cat, etc.) <%=f.text_field :pet_type %><br>
@@ -9,3 +23,5 @@
   Adopted?: <%= f.check_box :adopted, {}, "true", "false" %><br>
   <%= f.submit "Post Pet"%>
 <% end %>
+
+
