@@ -23,6 +23,7 @@ class SheltersController < ApplicationController
     end
 
     def edit
+        @shelter = Shelter.find_by(id: params[:id])
     end
 
     def index

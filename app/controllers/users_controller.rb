@@ -21,7 +21,6 @@ class UsersController < ApplicationController
         if current_user != @user 
             redirect_to '/'
         end
-      
     end
 
     def edit
@@ -30,14 +29,9 @@ class UsersController < ApplicationController
 
     def update
         @user = current_user
-        @user.update(pet_params)
+        @user.update(user_params)
         redirect_to user_path(@user)
     end
-
-
-
-
-
 
 
     private

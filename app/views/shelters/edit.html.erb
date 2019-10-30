@@ -1,4 +1,7 @@
-
+<% if @shelter.user == current_user %>
 <%= form_tag shelter_path(@shelter), method: "put" do %>
  <%= render partial: 'form', locals: {shelter: @shelter}, post: Shelter.new %>
 <% end %>
+<%else%>
+Sorry, you do not have access to this page. Please <%=link_to 'click', pets_path%> to view all available pets. 
+<%end%>
