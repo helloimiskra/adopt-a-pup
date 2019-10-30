@@ -1,5 +1,5 @@
 class PetsController < ApplicationController
-
+    before_action :require_login
     def new
         @pet = Pet.new
     end
@@ -7,6 +7,14 @@ class PetsController < ApplicationController
     def index
         if params[:shelter_id]
             @pets = Shelter.find(params[:shelter_id]).pets
+        elsif !params[:pet_type].blank?
+            @pets = Pet.by_pet_type(params[:pet_type])
+        elsif !params[:gender].blank?
+            if params[:gender] == "Boy"
+                @pets = Pet.boys
+            else
+                @pets = Pet.girls
+            end
         else
             @pets = Pet.all
         end
@@ -54,6 +62,10 @@ class PetsController < ApplicationController
     
     def pet_params
         params.require(:pet).permit(:name, :pet_type, :gender, :neutered, :breed, :description, :adopted, :shelter_id)
+    end
+
+    def require_login
+        return head(:forbidden) unless session.include? :user_id
     end
 
 

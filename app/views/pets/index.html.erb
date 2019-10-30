@@ -1,4 +1,12 @@
 <h4>All Pets:</h4> 
+<div>
+<h3>Filter pets:</h3>
+  <%= form_tag("/pets", method: "get") do %>
+    <%= select_tag "gender", options_for_select(["Boy", "Girl"]), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+
 
 <%@pets.each do |p| %>
 <div class="container">
@@ -8,7 +16,9 @@
       <div class="card-body">
       <h5 class="card-title"> <%=p.name%> </h5>
       <p class="card-text"><%= render partial: "pet_profile", locals: {pet: p} %></p>
+   
       <a href="/pets/<%=p.id%>/apply" class="btn btn-primary">Click to Apply</a>
+   
       </div>
       </div>
 </div>

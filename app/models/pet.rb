@@ -6,10 +6,13 @@ class Pet < ActiveRecord::Base
     validates :breed, format: { without: /[0-9]/, message: "does not allow numbers" }
     validates :gender, format: { without: /[0-9]/, message: "does not allow numbers" }
 
-    
-    def self.by_pet_type(pet_type)
-        where(pet_type: pet_type)
-    end
 
+
+    def self.boys
+        where(gender: "Boy")
+    end
     
+    def self.girls
+        where(gender: "Girl")
+    end
 end
