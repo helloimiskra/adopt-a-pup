@@ -28,13 +28,10 @@ Rails.application.routes.draw do
   patch '/pets/:id/apply', to: 'pets#update'
 
 
-  get "/auth/google_oauth2", to: 'sessions#googleAuth'
-  get '/auth/failure', to: redirect('/')
+  get '/auth/facebook/callback' => 'sessions#create'
 
 
 
   root 'users#welcome'
-
-  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
 
 end

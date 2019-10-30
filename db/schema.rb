@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_30_082909) do
+ActiveRecord::Schema.define(version: 2019_10_30_131401) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -46,16 +46,12 @@ ActiveRecord::Schema.define(version: 2019_10_30_082909) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
     t.string "username"
     t.string "password_digest"
     t.string "email"
     t.boolean "shelter_admin"
-    t.string "google_token"
-    t.string "google_refresh_token"
-    t.string "provider", limit: 50, default: "", null: false
     t.string "uid", limit: 500, default: "", null: false
+    t.string "name"
   end
 
 end

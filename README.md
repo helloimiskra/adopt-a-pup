@@ -1,24 +1,42 @@
-# README
+# Adopt-A-Pup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Adopt-A-Pup is a Rails app intended to connect shelters and users together. In order to run it, please follow the directions down below.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+First, fork and clone this repository.
 
-* System dependencies
+### Run 
+```bash
+bundle install
+```
+```bash
+rails db:migrate
+```
 
-* Configuration
+### If you'd like some seed data
 
-* Database creation
+```bash
+rails db:seed
+```
+### Then run
+```bash
+rails s thin
+```
 
-* Database initialization
+### Open your browser and go to:
+```bash
+https://localhost:3000
+```
 
-* How to run the test suite
+### To stop running the app, press:
+```bash
+CTRL+C
+````
 
-* Services (job queues, cache servers, search engines, etc.)
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-* Deployment instructions
 
-* ...
+## License
+[MIT](https://choosealicense.com/licenses/mit/)

@@ -6,15 +6,27 @@ class SessionsController < ApplicationController
     end
 
     def create
-        @user = User.find_by(username: params[:user][:username])
-
-        if @user && @user.authenticate(params[:user][:password])
-            session[:user_id] = @user.id
-            redirect_to user_path(@user)
+        if !params[:user][:username].blank?
+            @user = User.find_by(username: params[:user][:username])
+            if @user && @user.authenticate(params[:user][:password])
+                session[:user_id] = @user.id
+                redirect_to user_path(@user)
+            else
+                redirect_to '/login'
+            end
         else
-            flash[:alert] = 'Try Again.'
-            redirect_to '/login'
+            @user = User.find_or_create_by(uid: auth['uid']) do |u|
+                u.name = auth['info']['name']
+                u.email = auth['info']['email']
+            end
+            session[:user_id] = @user.id
+            render 'users/welcome'
+            end
+
         end
+
+            
+       
 
     end
  
@@ -22,19 +34,11 @@ class SessionsController < ApplicationController
         session.delete :user_id
         redirect_to '/'
     end
-
-    def googleAuth
-        # Get access tokens from the google server
-        access_token = request.env["omniauth.params"]
-        user = User.from_omniauth(access_token)
-        log_in(user)
-        # Access_token is used to authenticate request made from the rails application to the google server
-        user.google_token = access_token.credentials.token
-        # Refresh_token to request new access_token
-        # Note: Refresh_token is only sent once during the first request
-        refresh_token = access_token.credentials.refresh_token
-        user.google_refresh_token = refresh_token if refresh_token.present?
-        user.save
-        redirect_to root_path
-      end
+     
+    private
+     
+    def auth
+        request.env['omniauth.auth']
+    end
+    
 end

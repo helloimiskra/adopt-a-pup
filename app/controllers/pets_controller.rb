@@ -7,8 +7,6 @@ class PetsController < ApplicationController
     def index
         if params[:shelter_id]
             @pets = Shelter.find(params[:shelter_id]).pets
-        elsif !params[:pet_type].blank?
-            @pets = Pet.by_pet_type(params[:pet_type])
         elsif !params[:gender].blank?
             if params[:gender] == "Boy"
                 @pets = Pet.boys
@@ -44,7 +42,7 @@ class PetsController < ApplicationController
         @pet = Pet.find_by(id: params[:id])
         @pet.update(pet_params)
         if @pet.adopted == true
-            @pet.user_id == current_user.id
+            @pet.user_id = current_user.id
             @pet.save
         end
         redirect_to pet_path(@pet)
