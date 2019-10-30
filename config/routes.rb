@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   end
 
   patch 'pets/:id', to: 'pets#update'
- 
+  get '/pets/:id/apply', to: 'pets#edit'
+  patch '/pets/:id/apply', to: 'pets#update'
 
   root 'users#welcome'
 end

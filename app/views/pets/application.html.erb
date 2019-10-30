@@ -1,11 +1,10 @@
-Adoption Application Form: 
 
-Name: <%=@pet.name%>
-Pet Type: <%=@pet.pet_type%>
-Breed: <%=@pet.breed%>
-Shelter: <%=@pet.shelter.name%>
-Adopted?: <%= f.check_box :adopted, {}, 1, 0  %>
-<%= label_tag(:adopted, "I want to adopt this animal.") %>
+
+<% if @pet.user =/= current_user %>
+<%= form_tag pet_path(@pet), method: "put" do %>
+ <%= render partial: 'form', locals: {pet: @pet}, post: Pet.new %>
+<% end %>
+
 
 Adopter Name: <%=current_user.name%>
 Contact: <%=current_user.email%>

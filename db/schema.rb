@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_25_071112) do
+ActiveRecord::Schema.define(version: 2019_10_30_004646) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2019_10_25_071112) do
     t.integer "shelter_id"
     t.integer "user_id"
     t.boolean "adopted"
+    t.string "gender"
+    t.boolean "neutered"
   end
 
   create_table "shelters", force: :cascade do |t|

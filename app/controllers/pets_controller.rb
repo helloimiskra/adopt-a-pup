@@ -35,19 +35,26 @@ class PetsController < ApplicationController
 
     def update
         @pet = Pet.find_by(id: params[:id])
-      
         @pet.update(pet_params)
+        if @pet.adopted == true
+            @pet.user_id == current_user.id
+            @pet.save
+        end
         redirect_to pet_path(@pet)
     end
 
     def application
         @pet = Pet.find_by(id: params[:id])
+        @pet.update(pet_params)
+        @pet.user_id = current_user.id
+        @pet.save
+        redirect_to pet_path(@pet)
     end
 
     private
     
     def pet_params
-        params.require(:pet).permit(:name, :pet_type, :breed, :description, :adopted, :shelter_id)
+        params.require(:pet).permit(:name, :pet_type, :gender, :neutered, :breed, :description, :adopted, :shelter_id)
     end
 
 

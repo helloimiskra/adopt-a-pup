@@ -2,6 +2,8 @@
   Name: <%=f.text_field :name %><br>
   Pet Type: (dog, cat, etc.) <%=f.text_field :pet_type %><br>
   Breed: <%=f.text_field :breed %><br>
+  Boy or Girl?: <%=f.text_field :gender %><br>
+  Neutered?: <%=f.check_box :neutered, {}, "true", "false" %><br>
   Description: <%=f.text_area :description%><br>
   Shelter: <%=f.collection_select :shelter_id, Shelter.all, :id, :name  %><br>
   Adopted?: <%= f.check_box :adopted, {}, "true", "false" %><br>
