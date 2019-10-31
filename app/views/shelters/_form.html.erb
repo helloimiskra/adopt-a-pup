@@ -13,9 +13,19 @@
   </div>
 <% end %>
 
-<%= form_with model: @shelter do |f| %>
-  Name: <%=f.text_field :name %><br>
-  Address: <%=f.text_field :address %><br>
-  Email: <%=f.text_field :email %><br>
+<%= form_for @shelter do |f| %>
+  <%=f.label :name%> 
+  <%=f.text_field :name %><br>
+  <%=f.label :address %>
+  <%=f.text_field :address %><br>
+
+  <%=f.fields_for :cities do |c|%>
+  <%=c.label :name %>
+  <%=c.text_field :name %><br>
+  <%end%>
+  City: <%=f.collection_select :city %>
+  <%=f.label :email %>
+  <%=f.text_field :email %><br>
+  
   <%= f.submit "Create Shelter"%>
 <% end %>

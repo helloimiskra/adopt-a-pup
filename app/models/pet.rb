@@ -1,6 +1,6 @@
 class Pet < ActiveRecord::Base 
     belongs_to :shelter
-    belongs_to :user, optional: true
+    belongs_to :user
     validates :name, format: { without: /[0-9]/, message: "does not allow numbers" }
     validates :pet_type, format: { without: /[0-9]/, message: "does not allow numbers" }
     validates :breed, format: { without: /[0-9]/, message: "does not allow numbers" }

@@ -27,8 +27,13 @@ Rails.application.routes.draw do
   get '/pets/:id/apply', to: 'pets#edit'
   patch '/pets/:id/apply', to: 'pets#update'
 
+  
+  get 'signout', to: 'sessions#destroy', as: "signout"
+  get 'auth/failure', to: redirect('/')
 
-  get '/auth/facebook/callback' => 'sessions#create'
+  get 'auth/google_oauth2/callback', to: 'sessions#googleAuth'
+
+  
 
 
 

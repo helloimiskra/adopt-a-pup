@@ -19,6 +19,7 @@ class PetsController < ApplicationController
     end
 
     def create
+        @shelters = Shelter.find_by(user_id: current_user.id)
         @pet = Pet.create(pet_params)
         if @pet.save
             @pet.user_id = current_user.id
@@ -34,6 +35,7 @@ class PetsController < ApplicationController
     end
 
     def edit
+        @shelters = Shelter.find_by(user_id: current_user.id)
         @pet = Pet.find_by(id: params[:id])
     end
 
@@ -43,6 +45,7 @@ class PetsController < ApplicationController
         @pet.update(pet_params)
         if @pet.adopted == true
             @pet.user_id = current_user.id
+
             @pet.save
         end
         redirect_to pet_path(@pet)

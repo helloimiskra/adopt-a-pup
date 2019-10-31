@@ -10,7 +10,7 @@
 shelter_admin = User.create(name: 'Jane Smith', username: 'janesmith', password: 'password', email: 'janesmith@janesmith.com', shelter_admin: true)
 avg_user = User.create(name: 'Joe Smith', username: 'joesmith', password: 'password', email: 'joesmith@joesmith.com', shelter_admin: false)
 shelter_admin_two = User.create(name: 'Hyori Lee', username: 'leehyori', password: 'password', email: 'hyori@hyori.com', shelter_admin: true)
-
+city_one = City.create(name: 'Seoul')
 shelter_one = Shelter.create(name: "Needs Love", address: "Gangnam Station Exit 2", email: 'needslove@lovepets.com', user_id: 1, city_id: 1 )
 shelter_two = Shelter.create(name: "Karma", address: 'Yongin', email: 'karma@karma.com', user_id: 3, city_id: 1)
 pet_one = Pet.create(name: 'Mishka', pet_type: 'Dog', breed: 'Pembroke Welsh Corgi', gender: 'Boy', neutered: true, description: 'Found on the side of the road. Very friendly to other dogs and humans. Needs a loving home.', shelter_id: 1, user_id: 1, adopted: false)

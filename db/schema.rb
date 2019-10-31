@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_30_131401) do
+ActiveRecord::Schema.define(version: 2019_10_31_045808) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -52,6 +52,9 @@ ActiveRecord::Schema.define(version: 2019_10_30_131401) do
     t.boolean "shelter_admin"
     t.string "uid", limit: 500, default: "", null: false
     t.string "name"
+    t.string "provider"
+    t.string "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
 end
