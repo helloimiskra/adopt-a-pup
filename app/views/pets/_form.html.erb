@@ -4,6 +4,7 @@
       <%= pluralize(@pet.errors.count, "error") %>
       prohibited this pet from being saved:
     </h4>
+ 
     <ul>
     <% @pet.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>

@@ -30,6 +30,7 @@ gem 'omniauth-google-oauth2'
 gem 'thin'
 gem 'figaro'
 
+gem 'sysrandom'
 
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
 

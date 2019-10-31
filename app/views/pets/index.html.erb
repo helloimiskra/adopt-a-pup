@@ -1,6 +1,6 @@
-<h4>All Pets:</h4> 
+<h5>All Pets:</h5> 
 <div>
-<h3>Filter pets:</h3>
+<h5>Filter pets:</h5>
   <%= form_tag("/pets", method: "get") do %>
     <%= select_tag "gender", options_for_select(["Boy", "Girl"]), include_blank: true %>
     <%= submit_tag "Filter" %>
@@ -8,9 +8,10 @@
 </div>
 
 
-<%@pets.each do |p| %>
 <div class="container">
 <div class="row">
+<%@pets.each do |p| %>
+
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
@@ -22,10 +23,10 @@
       </div>
       </div>
 </div>
-</div>
-</div>
-<%end%>
 
+<%end%>
+</div>
+</div>
 
 <br>
 Click <%=link_to 'here', '/'%> to go to the home page.

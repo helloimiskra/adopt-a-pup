@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_045808) do
+ActiveRecord::Schema.define(version: 2019_10_31_153046) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -21,11 +21,15 @@ ActiveRecord::Schema.define(version: 2019_10_31_045808) do
     t.string "pet_type"
     t.string "breed"
     t.text "description"
-    t.integer "shelter_id"
-    t.integer "user_id"
     t.boolean "adopted"
     t.string "gender"
     t.boolean "neutered"
+    t.integer "city_id"
+    t.integer "shelter_id"
+    t.integer "user_id"
+    t.index ["city_id"], name: "index_pets_on_city_id"
+    t.index ["shelter_id"], name: "index_pets_on_shelter_id"
+    t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -50,11 +54,16 @@ ActiveRecord::Schema.define(version: 2019_10_31_045808) do
     t.string "password_digest"
     t.string "email"
     t.boolean "shelter_admin"
+    t.string "provider", limit: 50, default: "", null: false
     t.string "uid", limit: 500, default: "", null: false
     t.string "name"
-    t.string "provider"
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
+    t.string "google_uid"
+    t.string "google_refresh_token"
   end
 
+  add_foreign_key "pets", "cities"
+  add_foreign_key "pets", "shelters"
+  add_foreign_key "pets", "users"
 end
