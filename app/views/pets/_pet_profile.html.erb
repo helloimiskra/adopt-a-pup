@@ -1,4 +1,4 @@
-Name:<%=pet.name%><br>
+Name: <%=pet.name%><br>
 Pet Type: <%=pet.pet_type%><br>
 Breed: <%=pet.breed%><br>
 More about me: <%=pet.description%><br>
@@ -17,3 +17,6 @@ Available?: <% if pet.adopted == false %>
 <%end%>
 <br>
 <br>
+<% if logged_in? && current_user.pets.include?(pet) %>
+Click to edit <%= link_to pet.name, edit_pet_path(pet)%>'s page.
+<%end%>
