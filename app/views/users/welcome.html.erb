@@ -5,7 +5,6 @@ Bringing shelters and adopters together since 2019<br><br>
 Looking for a pet?<br>
 <%=link_to 'Sign up', '/signup' %> or <%=link_to 'log in', '/login' %> to start looking at available pets or to start managing your shelter.
 <br>
-<br>
 <%= button_to 'Sign in via Google', '/auth/google_oauth2' %>
  
 <% elsif current_user.shelter_admin == true%>
@@ -22,7 +21,7 @@ Click to manage your <%=link_to 'user page', user_path(current_user)%>
 <% end %>
 <%else%>
 Welcome, <%=current_user.name%>. <br>
-Click to manage your <%=link_to 'page', user_path(current_user)%>
+Click to manage your <%=link_to 'page', user_path(current_user)%>.
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='Log Out'>
 <% end %>

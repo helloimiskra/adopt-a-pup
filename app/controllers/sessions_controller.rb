@@ -26,7 +26,6 @@ class SessionsController < ApplicationController
 
     end
 
-    #use auth instead of params ie: auth.username
  
     def destroy
         session.delete :user_id

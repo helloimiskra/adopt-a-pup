@@ -1,19 +1,19 @@
-<% if @user.errors.any? %>
+<% if user.errors.any? %>
   <div id="error_explanation">
     <h4>
-      <%= pluralize(@user.errors.count, "error") %>
+      <%= pluralize(user.errors.count, "error") %>
       prohibited this user from being saved:
     </h4>
  
     <ul>
-    <% @user.errors.full_messages.each do |msg| %>
+    <% user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     </ul>
   </div>
 <% end %>
 
-<%= form_for(@user) do |f| %>
+<%= form_for(user) do |f| %>
   Name: <%=f.text_field :name %><br>
 
   Username: <%=f.text_field :username %><br>
@@ -22,7 +22,15 @@
   Check if you are representing a shelter.
   <%= f.check_box :shelter_admin, {}, "true", "false" %><br>
 
-  <%= f.submit "Create User"%>
+  If you are a shelter manager, please add your shelter's information down below: <br> 
+  
+  <%= f.fields_for :shelters, user.shelters.build do |shelter_fields| %>
+    Name: <%= shelter_fields.text_field :name %><br>
+    Email: <%= shelter_fields.text_field :email %><br>
+    Address: <%= shelter_fields.text_field :address %><br>
+  <% end %>
+
+  <%= f.submit%>
 <% end %>
 
 <%= button_to 'Sign in via Google', '/auth/google_oauth2' %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_153046) do
+ActiveRecord::Schema.define(version: 2019_11_02_171336) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -41,12 +41,17 @@ ActiveRecord::Schema.define(version: 2019_10_31_153046) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
+  create_table "shelter_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "shelter_id"
+    t.index ["shelter_id"], name: "index_shelter_users_on_shelter_id"
+    t.index ["user_id"], name: "index_shelter_users_on_user_id"
+  end
+
   create_table "shelters", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.string "email"
-    t.integer "city_id"
-    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,4 +71,6 @@ ActiveRecord::Schema.define(version: 2019_10_31_153046) do
   add_foreign_key "pets", "cities"
   add_foreign_key "pets", "shelters"
   add_foreign_key "pets", "users"
+  add_foreign_key "shelter_users", "shelters"
+  add_foreign_key "shelter_users", "users"
 end

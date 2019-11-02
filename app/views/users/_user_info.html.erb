@@ -1,11 +1,11 @@
-<h1>Welcome, <%=@user.name%>.</h1>
+<h1>Welcome, <%=user.name%>.</h1>
 Your registered information is down below:<br>
-Username: <%=@user.username%> <br>
-Contact Email: <%=@user.email%><br>
+Username: <%=user.username%> <br>
+Contact Email: <%=user.email%><br>
 
-<% if @user.shelter_admin == true %>
-<% @user.pets.map do |p| %><br>
-Manage <%= link_to p.shelter.name, shelter_path(p.shelter) %> here.<br>
+<% if user.shelter_admin == true %>
+<% user.shelters do |s| %><br>
+Manage <%= link_to s.name, shelter_path(s) %> here.<br>
 <%end%>
 Create a new shelter <%=link_to 'here', new_shelter_path%>.
 <br>

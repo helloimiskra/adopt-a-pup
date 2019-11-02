@@ -1,31 +1,26 @@
-<% if @shelter.errors.any? %>
+<% if shelter.errors.any? %>
   <div id="error_explanation">
     <h4>
-      <%= pluralize(@shelter.errors.count, "error") %>
+      <%= pluralize(shelter.errors.count, "error") %>
       prohibited this shelter from being saved:
     </h4>
  
     <ul>
-    <% @shelter.errors.full_messages.each do |msg| %>
+    <% shelter.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     </ul>
   </div>
 <% end %>
 
-<%= form_for @shelter do |f| %>
+<%= form_for(shelter) do |f| %>
   <%=f.label :name%> 
   <%=f.text_field :name %><br>
   <%=f.label :address %>
-  <%=f.text_field :address %><br>
-
-  <%=f.fields_for :cities do |c|%>
-  <%=c.label :name %>
-  <%=c.text_field :name %><br>
-  <%end%>
-  City: <%=f.collection_select :city %>
+  <%=f.text_field :address %>
+  <br>
   <%=f.label :email %>
   <%=f.text_field :email %><br>
   
-  <%= f.submit "Create Shelter"%>
+  <%= f.submit%>
 <% end %>

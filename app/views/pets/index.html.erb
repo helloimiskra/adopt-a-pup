@@ -12,14 +12,17 @@
 <div class="row">
 <%@pets.each do |p| %>
 
+
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
       <h5 class="card-title"> <%=p.name%> </h5>
       <p class="card-text"><%= render partial: "pet_profile", locals: {pet: p} %></p>
-   
+
+      <%if p.adopted == false %>
       <a href="/pets/<%=p.id%>/apply" class="btn btn-primary">Click to Apply</a>
-   
+      <%else%>
+      <%end%>
       </div>
       </div>
 </div>

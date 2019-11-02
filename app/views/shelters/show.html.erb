@@ -4,7 +4,7 @@ Contact Email: <%=@shelter.email%><br>
 <%=link_to 'Browse Available Pets', shelter_pets_path(@shelter.id)%>
 <br>
 
-<% if current_user = @shelter.user %>
+<% if @shelter.users.include?(current_user) %>
 <%=link_to 'Add a pet to your shelter here.', new_pet_path %><br>
 <%=link_to 'Edit your shelter information here.', edit_shelter_path(@shelter) %>
 <%end%>

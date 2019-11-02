@@ -6,7 +6,7 @@ class PetsController < ApplicationController
 
     def index
         if params[:shelter_id]
-            @pets = Shelter.find(params[:shelter_id]).pets
+            @pets = Shelter.find_by(id: params[:shelter_id]).pets
         elsif !params[:gender].blank?
             if params[:gender] == "Boy"
                 @pets = Pet.boys
@@ -16,13 +16,14 @@ class PetsController < ApplicationController
         else
             @pets = Pet.all
         end
+      
     end
 
     def create
-        @shelters = Shelter.find_by(user_id: current_user.id)
         @pet = Pet.create(pet_params)
-        if @pet.save
-            @pet.user_id = current_user.id
+        @pet.user_id = current_user.id
+        @pet.shelter_id = current_user.shelters.last.id
+        if @pet.valid?
             @pet.save
             redirect_to pet_path(@pet)
         else
@@ -35,7 +36,7 @@ class PetsController < ApplicationController
     end
 
     def edit
-        @shelters = Shelter.find_by(user_id: current_user.id)
+       
         @pet = Pet.find_by(id: params[:id])
     end
 
@@ -62,7 +63,7 @@ class PetsController < ApplicationController
     private
     
     def pet_params
-        params.require(:pet).permit(:name, :pet_type, :gender, :neutered, :breed, :description, :adopted, :shelter_id)
+        params.require(:pet).permit(:name, :pet_type, :gender, :neutered, :breed, :description, :adopted, :shelter_id, :city_id)
     end
 
     def require_login

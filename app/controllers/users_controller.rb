@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:name, :username, :password, :email, :shelter_admin, :uid, :provider)
+        params.require(:user).permit(:name, :username, :password, :email, :shelter_admin, :uid, :provider, :shelter_ids => [], shelters_attributes: [:name, :email, :address])
     end
 
 end

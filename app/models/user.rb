@@ -3,8 +3,18 @@ class User < ActiveRecord::Base
     validates :email, uniqueness: true
     validates :username, uniqueness: true
     validates :name, format: { without: /[0-9]/, message: "does not allow numbers" }
-    has_many :shelters, through: :pets
     has_many :pets
+    has_many :shelter_users
+    has_many :shelters, through: :shelter_users
+
+    attr_accessor :shelters_attributes
+
+    def shelters_attributes=(shelter_attributes)
+        shelter_attributes.values.each do |shelter_attribute|
+             shelter = Shelter.find_or_create_by(shelter_attribute)
+          self.shelters << shelter
+        end
+      end
 
     def self.from_google(auth)
         refresh_token = auth.credentials.refresh_token

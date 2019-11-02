@@ -10,10 +10,11 @@ Yes.
 No, I'm not.
 <%end%><br>
 Where am I?: Currently @ <%=link_to pet.shelter.name, shelter_path(pet.shelter) %><br>
+
 Available?: <% if pet.adopted == false %>
 <%= "Yes, I need a new home!" %>
 <% else %>
-<%= "I've found a home with #{pet.user.name}."%>
+<%= "I've found a home."%>
 <%end%>
 <br>
 <br>
