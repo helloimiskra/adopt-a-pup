@@ -4,7 +4,6 @@ Username: <%=current_user.username%> <br>
 Contact Email: <%=current_user.email%><br>
 
 <% if current_user.shelter_admin == true %>
-
 <%= render partial: "if_shelter_admin", locals: {user: user} %>
 <%end%>
 
