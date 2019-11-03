@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get '/apply' => 'pets#application'
 
   resources :shelters, only: [:show] do
-    resources :pets, only: [:show, :index]
+    resources :pets, only: [:show, :index, :new, :edit]
   end
 
   patch 'pets/:id', to: 'pets#update'

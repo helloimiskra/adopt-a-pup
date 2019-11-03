@@ -14,6 +14,7 @@
 <% end %>
 
 <%= form_for(pet) do |f| %>
+  <%= f.hidden_field :shelter_id %>
   Name: <%=f.text_field :name %><br>
   Pet Type: (dog, cat, etc.) <%=f.text_field :pet_type %><br>
   Breed: <%=f.text_field :breed %><br>

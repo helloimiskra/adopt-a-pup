@@ -5,6 +5,6 @@ Contact Email: <%=@shelter.email%><br>
 <br>
 
 <% if @shelter.users.include?(current_user) %>
-<%=link_to 'Add a pet to your shelter here.', new_pet_path %><br>
+<%=link_to 'Add a pet to your shelter here.', new_shelter_pet_path(@shelter) %><br>
 <%=link_to 'Edit your shelter information here.', edit_shelter_path(@shelter) %>
 <%end%>

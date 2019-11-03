@@ -2,7 +2,11 @@ class PetsController < ApplicationController
     before_action :require_login
 
     def new
-        @pet = Pet.new
+        if params[:shelter_id]
+            @pet = Pet.new(shelter_id: params[:shelter_id])
+        else
+            @pet = Pet.new
+        end
     end
 
     def index
@@ -53,7 +57,7 @@ class PetsController < ApplicationController
 
     def application
         @pet = Pet.find_by(params[:id])
-        
+
         @pet.update(pet_params)
         @pet.user_id = current_user.id
         @pet.save
