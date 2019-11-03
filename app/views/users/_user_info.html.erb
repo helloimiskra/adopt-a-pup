@@ -1,15 +1,16 @@
-<h1>Welcome, <%=user.name%>.</h1>
+<h1>Welcome, <%=current_user.name%>.</h1>
 Your registered information is down below:<br>
-Username: <%=user.username%> <br>
-Contact Email: <%=user.email%><br>
+Username: <%=current_user.username%> <br>
+Contact Email: <%=current_user.email%><br>
 
-<% if user.shelter_admin == true %>
-<% user.shelters do |s| %><br>
-Manage <%= link_to s.name, shelter_path(s) %> here.<br>
+<% if current_user.shelters.present? == true %>
+    <% current_user.shelters.map do |s| %><br>
+    Manage <%= link_to s.name, shelter_path(s) %> here.<br>
+   
+    <%end%>
+    Create a new shelter <%=link_to 'here', new_shelter_path%>.
 <%end%>
-Create a new shelter <%=link_to 'here', new_shelter_path%>.
 <br>
+
+
 Click <%=link_to 'here', pets_path %> to view all pets.
-
-
-<%end%>

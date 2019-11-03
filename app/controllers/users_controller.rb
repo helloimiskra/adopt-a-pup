@@ -8,8 +8,12 @@ class UsersController < ApplicationController
 
         if @user.valid?
             @user.save
-            session[:user_id] = @user.id 
-            redirect_to user_path(@user)
+            session[:user_id] = @user.id
+            if @user.shelter_admin == true
+                redirect_to new_shelter_path
+            else
+                redirect_to user_path(@user)
+            end
         else
             render :new
         end
@@ -18,6 +22,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by(id: params[:id])
+
         if current_user != @user 
             redirect_to '/'
         end

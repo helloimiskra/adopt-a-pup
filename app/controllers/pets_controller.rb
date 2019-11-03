@@ -1,5 +1,6 @@
 class PetsController < ApplicationController
     before_action :require_login
+
     def new
         @pet = Pet.new
     end
@@ -16,7 +17,6 @@ class PetsController < ApplicationController
         else
             @pets = Pet.all
         end
-      
     end
 
     def create
@@ -36,24 +36,23 @@ class PetsController < ApplicationController
     end
 
     def edit
-       
         @pet = Pet.find_by(id: params[:id])
     end
 
 
     def update
         @pet = Pet.find_by(id: params[:id])
+   
         @pet.update(pet_params)
         if @pet.adopted == true
             @pet.user_id = current_user.id
-
             @pet.save
         end
         redirect_to pet_path(@pet)
     end
 
     def application
-        @pet = Pet.find_by(id: params[:id])
+        @pet = Pet.find_by(params[:id])
         @pet.update(pet_params)
         @pet.user_id = current_user.id
         @pet.save

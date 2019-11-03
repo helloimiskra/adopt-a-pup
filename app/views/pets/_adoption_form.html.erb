@@ -1,0 +1,13 @@
+<%= form_for(@pet) do |f| %>
+  Name: <%=@pet.name%><br>
+  Pet Type: (dog, cat, etc.) <%=@pet.pet_type%><br>
+  Breed: <%=@pet.breed %><br>
+  Boy or Girl?: <%=@pet.gender %><br>
+  Neutered?: <% @pet.neutered == true ? "Yes." : "No."%><br>
+  Description: <%=@pet.description%><br>
+  Check the box if you'd like to adopt <%=@pet.name%><br> 
+  <%= f.check_box :adopted, {}, "true", "false" %><br>
+  
+  <%= f.submit %>
+<% end %>
+
