@@ -9,7 +9,7 @@ Yes.
 <%else%>
 No, I'm not.
 <%end%><br>
-Where am I?: Currently @ <%=link_to pet.shelter.name, shelter_path(pet.shelter) %><br>
+My Shelter: <%=link_to pet.shelter.name, shelter_path(pet.shelter) %><br>
 
 Available?: <% if pet.adopted == false %>
 <%= "Yes, I need a new home!" %>
@@ -20,4 +20,8 @@ Available?: <% if pet.adopted == false %>
 <br>
 <% if logged_in? && current_user.pets.include?(pet) %>
 Click to edit <%= link_to pet.name, edit_pet_path(pet)%>'s page.
+<%elsif logged_in? && current_user.shelters.include?(pet.shelter)%>
+Click to edit <%= link_to pet.name, edit_pet_path(pet)%>'s page.
+<%else%>
+
 <%end%>

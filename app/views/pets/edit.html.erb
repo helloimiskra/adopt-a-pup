@@ -1,6 +1,6 @@
 
 <%= form_tag pet_path(@pet), method: "put" do %>
-    <% if @pet.user == current_user %>
+    <% if @pet.user == current_user || current_user.shelters.include?(@pet.shelter)%>
  <%= render partial: 'form', locals: {pet: @pet}, post: Pet.new %>
  <%else%>
  <%= render partial: 'adoption_form', locals: {pet: @pet}, post: Pet.new %>

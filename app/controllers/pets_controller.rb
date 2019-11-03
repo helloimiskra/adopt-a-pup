@@ -53,6 +53,7 @@ class PetsController < ApplicationController
 
     def application
         @pet = Pet.find_by(params[:id])
+        
         @pet.update(pet_params)
         @pet.user_id = current_user.id
         @pet.save
