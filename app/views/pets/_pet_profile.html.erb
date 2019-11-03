@@ -18,10 +18,13 @@ Available?: <% if pet.adopted == false %>
 <%end%>
 <br>
 <br>
-<% if logged_in? && current_user.pets.include?(pet) %>
-Click to edit <%= link_to pet.name, edit_pet_path(pet)%>'s page.
+<% if logged_in? && current_user.shelter_admin == false && current_user.pets.include?(pet) %>
+Click to edit <%= link_to pet.name, edit_pet_path(pet) if pet.user %>'s page.
 <%elsif logged_in? && current_user.shelters.include?(pet.shelter)%>
-Click to edit <%= link_to pet.name, edit_pet_path(pet)%>'s page.
+Click to edit <%= link_to pet.name, edit_shelter_pet_path(pet.shelter, pet) if pet.shelter %>'s page.
 <%else%>
 
 <%end%>
+
+
+

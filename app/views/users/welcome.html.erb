@@ -9,7 +9,11 @@ Bringing shelters and adopters together since 2019<br><br>
 <% elsif current_user.shelter_admin == true%>
 Welcome, <%=current_user.name%>.<br>
 <% current_user.shelters.map do |s| %>
+  <% if s.name == ""%>
+  <% %>
+  <%else%>
 Click to manage <%=link_to s.name, shelter_path(s)%>.<br>
+<%end%>
 <%end%>
 <br>
 Click to manage your <%=link_to 'user page', user_path(current_user)%>
