@@ -3,10 +3,14 @@ Your registered information is down below:<br>
 Username: <%=current_user.username%> <br>
 Contact Email: <%=current_user.email%><br>
 
-<% if current_user.shelters.present? == true %>
-    <% current_user.shelters.map do |s| %><br>
+<% if current_user.shelter_admin == true %>
+    <% current_user.shelters.map do |s| %>
+    <% if s.name == ""%>
+    <% %>
+    <%else%>
     Manage <%= link_to s.name, shelter_path(s) %> here.<br>
    
+    <%end%>
     <%end%>
     Create a new shelter <%=link_to 'here', new_shelter_path%>.
 <%end%>
