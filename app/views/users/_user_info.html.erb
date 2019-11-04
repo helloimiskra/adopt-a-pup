@@ -6,5 +6,5 @@ Contact Email: <%=current_user.email%><br>
 <% if current_user.shelter_admin == true %>
 <%= render partial: "if_shelter_admin", locals: {user: user} %>
 <%end%>
-
+<br>
 Click <%=link_to 'here', pets_path %> to view all pets.

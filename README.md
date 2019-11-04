@@ -21,12 +21,12 @@ rails db:seed
 ```
 ### Then run
 ```bash
-rails s thin
+rails s
 ```
 
 ### Open your browser and go to:
 ```bash
-https://localhost:3000
+http://localhost:3000
 ```
 
 ### To stop running the app, press:
