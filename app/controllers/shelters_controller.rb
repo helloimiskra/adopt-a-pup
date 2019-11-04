@@ -1,5 +1,5 @@
 class SheltersController < ApplicationController
-
+    before_action :require_login
     def new
         @shelter = Shelter.new
        
@@ -44,4 +44,7 @@ class SheltersController < ApplicationController
         params.require(:shelter).permit(:name, :address, :email)
     end
 
+    def require_login
+        return head(:forbidden) unless session.include? :user_id
+    end
 end
